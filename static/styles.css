@@ -10,7 +10,7 @@ body {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #007bff;
+    background-color: #0064B1;
     border-radius: 50%;
     width: 60px;
     height: 60px;
@@ -26,6 +26,7 @@ body {
     color: #fff;
 }
 
+/* Chat Box */
 /* Chat Box */
 #chat-box {
     position: fixed;
@@ -57,23 +58,54 @@ body {
     height: 80%;   /* Increased height when maximized */
 }
 
+/* Chat Header */
 #chat-header {
-    background-color: #007bff;
+    background-color: #0064B1;
     color: #fff;
     padding: 10px;
-    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0px 10px 8px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+}
+.header-content {
+    display: flex;
+    align-items: center; /* Align profile picture and text vertically */
+    gap: 10px; /* Space between profile picture and text */
 }
 
-#chat-controls button {
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 18px;
-    cursor: pointer;
-    margin-left: 5px;
+/* Profile Picture Styling */
+.profile-pic {
+    width: 40px; /* Adjust size as needed */
+    height: 40px;
+    border-radius: 50%; /* Makes the image circular */
+    margin-right: 10px; /* Space between image and text */
+}
+
+/* Left-aligned text container */
+.header-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align text to the left */
+}
+
+/* New header title styling */
+.header-title {
+    font-size: 16px;
+}
+
+/* Style for the PIXEL text */
+#chat-header span {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Helvetica', sans-serif;
+}
+
+/* Chat controls aligned to the right */
+#chat-controls {
+    display: flex;
+    gap: 5px;
 }
 
 #chat-content {
@@ -93,6 +125,7 @@ body {
     display: flex;
     padding: 10px;
     border-top: 1px solid #ccc;
+    box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.2);
 }
 
 #chat-input input {
@@ -104,7 +137,7 @@ body {
 }
 
 #chat-input button {
-    background-color: #007bff;
+    background-color: #0064B1;
     border: none;
     color: #fff;
     padding: 8px 15px;
@@ -113,54 +146,84 @@ body {
     cursor: pointer;
 }
 
+
+/* Message Bubbles */
+/* Message Container */
+#messages {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Message Row Container */
+.message-row {
+    display: flex;
+    align-items: flex-end; /* Align messages and profile pics vertically */
+    margin-bottom: 10px;
+    position: relative;
+}
+
+/* Bot message row (Profile pic on the left) */
+.message-row.bot {
+    justify-content: flex-start; /* Align content to the left */
+}
+
+/* Sender label styling */
+.sender-label {
+    font-size: 12px;
+    color: grey;
+    margin-bottom: 2px; /* Small space between label and message bubble */
+    text-align: left;
+}
+
+/* User message row (Profile pic on the right) */
+.message-row.user {
+    justify-content: flex-end; /* Align content to the right */
+}
+
+/* Small Profile Picture Styling */
+.profile-pic-small {
+    width: 30px; /* Adjust size as needed */
+    height: 30px;
+    border-radius: 50%; /* Makes the image circular */
+    margin: 0 10px; /* Space between profile pic and message */
+    border: 1px solid #0064B1; /* Thin black outline */
+}
+
 /* Message Bubbles */
 .message {
-    max-width: 90%;
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 10px;
+    --r: 20px;  /* Radius */
+    max-width: 30%;
+    padding: 1em;
+    border-radius: var(--r);
+    background: linear-gradient(135deg, #1384C5, #0064B1); /* Main gradient */
+    color: #fff;
     position: relative;
-    clear: both;
     word-wrap: break-word;
     white-space: pre-wrap;
 }
 
-.message.user {
-    background-color: #dcf8c6;
-    float: right;
-    align-self: flex-end;
-}
-
+/* Bot Message (Left-aligned) */
 .message.bot {
-    background-color: #f1f0f0;
-    float: left;
     align-self: flex-start;
+    background: linear-gradient(135deg, #1384C5, #0064B1); /* Ensure same gradient */
 }
 
-/* Message Tails */
-.message.user::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    right: -10px;
-    width: 0;
-    height: 0;
-    border-left: 10px solid #dcf8c6;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
+/* User Message (Right-aligned) */
+.message.user {
+    align-self: flex-end;
+    background: linear-gradient(135deg, #0064B1, #1384C5); /* Ensure same gradient */
 }
 
-.message.bot::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: -10px;
-    width: 0;
-    height: 0;
-    border-right: 10px solid #f1f0f0;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
+/* Remove float properties */
+.message.user,
+.message.bot {
+    float: none;
 }
+
 
 /* Scrollbar Styling */
 #messages::-webkit-scrollbar {
@@ -169,5 +232,5 @@ body {
 
 #messages::-webkit-scrollbar-thumb {
     background-color: #ccc;
-    border-radius: 3px;
+    border-radius: 10px;
 }

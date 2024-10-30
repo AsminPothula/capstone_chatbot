@@ -7,6 +7,11 @@ const sendBtn = document.getElementById('send-btn');
 const userInput = document.getElementById('user-input');
 const messagesDiv = document.getElementById('messages');
 
+// Get profile picture URLs from data attributes
+const chatContent = document.getElementById('chat-content');
+const userPicUrl = chatContent.getAttribute('data-user-pic');
+const botPicUrl = chatContent.getAttribute('data-bot-pic');
+
 // Chat Box State
 let chatState = 'collapsed'; // 'collapsed', 'normal', 'maximized'
 
@@ -75,18 +80,39 @@ function sendMessage() {
 }
 
 function displayMessage(text, sender) {
+    const messageRow = document.createElement('div');
+    messageRow.classList.add('message-row', sender);
+
+    // Create profile picture element
+    const profilePic = document.createElement('img');
+    profilePic.classList.add('profile-pic-small');
+    profilePic.src = sender === 'user' ? userPicUrl : botPicUrl; // Use the URLs from data attributes
+
+    // Create message bubble element
     const messageBubble = document.createElement('div');
     messageBubble.classList.add('message', sender);
 
+    // Add message content, linkifying URLs if the sender is bot
     if (sender === 'bot') {
-        // Convert URLs in the text to clickable links
-        const linkedText = linkify(text);
+        const linkedText = linkify(text); // Convert URLs in bot text to clickable links
         messageBubble.innerHTML = linkedText;
     } else {
         messageBubble.textContent = text;
     }
 
-    messagesDiv.appendChild(messageBubble);
+    // Append profile picture and message bubble based on sender
+    if (sender === 'user') {
+        messageRow.appendChild(messageBubble);
+        messageRow.appendChild(profilePic); // User profile on the right
+    } else {
+        messageRow.appendChild(profilePic); // Bot profile on the left
+        messageRow.appendChild(messageBubble);
+    }
+
+    // Add the message row to the messages container
+    messagesDiv.appendChild(messageRow);
+
+    // Scroll to the bottom of the chat
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
 }
 
@@ -107,3 +133,15 @@ function updateToggleSizeBtn() {
         toggleSizeBtn.textContent = '▢';
     }
 }
+
+//done - add thin black circle around the user and ot profile pi
+//don't - add blaze and pixel rigth above messages 
+//chnage the banner to remove P and say chat with PIXEL (logo style)
+//add the chat with pixel attraction thing for the webiste - or ask dowbts 
+//done - add shadow to typing area and banner
+//add the wave thing with - cse senior deisg help 
+
+//future work:
+// when inetregated into tje porject management tool, the chatbot shows that specific user's name with ther user query and that will be stored in memomry/databse for that sepcific user so the chatbot has context of the user's work/project/doubts/issues.
+//database to store all the user queries and reponses and train model on that again - continuous 
+
