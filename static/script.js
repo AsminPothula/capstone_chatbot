@@ -144,4 +144,5 @@ function updateToggleSizeBtn() {
 //future work:
 // when inetregated into tje porject management tool, the chatbot shows that specific user's name with ther user query and that will be stored in memomry/databse for that sepcific user so the chatbot has context of the user's work/project/doubts/issues.
 //database to store all the user queries and reponses and train model on that again - continuous 
+//was this reponsse hlpful or not option tp improve the reposne (store seperately in database and train acc)
 

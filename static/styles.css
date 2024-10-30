@@ -27,7 +27,6 @@ body {
 }
 
 /* Chat Box */
-/* Chat Box */
 #chat-box {
     position: fixed;
     bottom: 80px;
@@ -54,8 +53,8 @@ body {
 
 #chat-box.maximized {
     display: flex;
-    width: 500px; /* Increased width when maximized */
-    height: 80%;   /* Increased height when maximized */
+    width: 500px;
+    height: 80%;
 }
 
 /* Chat Header */
@@ -71,23 +70,23 @@ body {
 }
 .header-content {
     display: flex;
-    align-items: center; /* Align profile picture and text vertically */
-    gap: 10px; /* Space between profile picture and text */
+    align-items: center;
+    gap: 10px;
 }
 
 /* Profile Picture Styling */
 .profile-pic {
-    width: 40px; /* Adjust size as needed */
+    width: 40px;
     height: 40px;
-    border-radius: 50%; /* Makes the image circular */
-    margin-right: 10px; /* Space between image and text */
+    border-radius: 50%;
+    margin-right: 10px;
 }
 
 /* Left-aligned text container */
 .header-text {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Align text to the left */
+    align-items: flex-start;
 }
 
 /* New header title styling */
@@ -119,6 +118,9 @@ body {
     flex: 1;
     padding: 10px;
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 #chat-input {
@@ -146,60 +148,35 @@ body {
     cursor: pointer;
 }
 
-
 /* Message Bubbles */
-/* Message Container */
-#messages {
-    flex: 1;
-    padding: 10px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-/* Message Row Container */
 .message-row {
     display: flex;
-    align-items: flex-end; /* Align messages and profile pics vertically */
+    align-items: flex-end;
     margin-bottom: 10px;
     position: relative;
 }
 
-/* Bot message row (Profile pic on the left) */
 .message-row.bot {
-    justify-content: flex-start; /* Align content to the left */
+    justify-content: flex-start;
 }
 
-/* Sender label styling */
-.sender-label {
-    font-size: 12px;
-    color: grey;
-    margin-bottom: 2px; /* Small space between label and message bubble */
-    text-align: left;
-}
-
-/* User message row (Profile pic on the right) */
 .message-row.user {
-    justify-content: flex-end; /* Align content to the right */
+    justify-content: flex-end;
 }
 
-/* Small Profile Picture Styling */
 .profile-pic-small {
-    width: 30px; /* Adjust size as needed */
+    width: 30px;
     height: 30px;
-    border-radius: 50%; /* Makes the image circular */
-    margin: 0 10px; /* Space between profile pic and message */
-    border: 1px solid #0064B1; /* Thin black outline */
+    border-radius: 50%;
+    margin: 0 10px;
+    border: 1px solid #0064B1;
 }
 
-/* Message Bubbles */
 .message {
-    --r: 20px;  /* Radius */
-    max-width: 30%;
+    --r: 20px;
+    max-width: 60%;
     padding: 1em;
     border-radius: var(--r);
-    background: linear-gradient(135deg, #1384C5, #0064B1); /* Main gradient */
     color: #fff;
     position: relative;
     word-wrap: break-word;
@@ -209,21 +186,26 @@ body {
 /* Bot Message (Left-aligned) */
 .message.bot {
     align-self: flex-start;
-    background: linear-gradient(135deg, #1384C5, #0064B1); /* Ensure same gradient */
+    background: linear-gradient(135deg, #1384C5 20%, #0064B1 80%);
 }
 
 /* User Message (Right-aligned) */
 .message.user {
     align-self: flex-end;
-    background: linear-gradient(135deg, #0064B1, #1384C5); /* Ensure same gradient */
+    background-color: #1384C5;
 }
 
-/* Remove float properties */
-.message.user,
-.message.bot {
-    float: none;
+/* Overlapping Effect */
+.message-row.user .message {
+    position: relative;
+    margin-right: -3px; /* Adjust this for overlap depth */
 }
 
+.message-row.bot .message {
+    position: relative;
+    margin-left: -3px; /* Adjust this for overlap depth */
+    margin-right: 5px;
+}
 
 /* Scrollbar Styling */
 #messages::-webkit-scrollbar {
