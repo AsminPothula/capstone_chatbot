@@ -10,7 +10,7 @@ body {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #0064B1;
+    background-color: #e41c4b;
     border-radius: 50%;
     width: 60px;
     height: 60px;
@@ -59,13 +59,13 @@ body {
 
 /* Chat Header */
 #chat-header {
-    background-color: #0064B1;
+    background-color: #e41c4b;
     color: #fff;
     padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0px 10px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.2);
     font-family: Arial, sans-serif;
 }
 .header-content {
@@ -127,7 +127,7 @@ body {
     display: flex;
     padding: 10px;
     border-top: 1px solid #ccc;
-    box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.2);
 }
 
 #chat-input input {
@@ -139,7 +139,7 @@ body {
 }
 
 #chat-input button {
-    background-color: #0064B1;
+    background-color: #e41c4b;
     border: none;
     color: #fff;
     padding: 8px 15px;
@@ -169,7 +169,7 @@ body {
     height: 30px;
     border-radius: 50%;
     margin: 0 10px;
-    border: 1px solid #0064B1;
+    border: 1px solid #e41c4b;
 }
 
 .message {
@@ -186,13 +186,13 @@ body {
 /* Bot Message (Left-aligned) */
 .message.bot {
     align-self: flex-start;
-    background: linear-gradient(135deg, #1384C5 20%, #0064B1 80%);
+    background-color: #c3c1c1;
 }
 
 /* User Message (Right-aligned) */
 .message.user {
     align-self: flex-end;
-    background-color: #1384C5;
+    background-color: #8b8d8e;
 }
 
 /* Overlapping Effect */
